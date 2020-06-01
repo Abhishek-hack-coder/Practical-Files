@@ -1,0 +1,109 @@
+PRACTICAL : 1
+AIM: To draw four different shapes using different functions.
+PROGRAM:
+#include<stdio.h>
+#include<graphics.h>
+void main()
+{ 
+Int gd=DETECT,gm;
+Initgraph(&gd,&gm,” “);
+line(300,100,200,200);
+line(200,200,400,200);
+line(200,200,400,200);
+circle(100,100,50);
+ellipse(100,300,360,0,50,100);
+rectangle(250,250,400,400);
+outtextxy(500,500,”NITIN TYAGI(41113303118)”);
+getch();
+closegraph();
+}
+
+PRACTICAL: 2
+AIM: To draw a straight line using DDA line algorithm.
+PROGRAM:
+#include<stdio.h>
+#include<graphics.h>
+{
+float x,y,dx,dy,length;
+int gd=DETECT,gm,s,p,x1,y1,x2,y2;
+printf(“Enter the coordinates x1 and y1:”);
+scanf(“%d%d”,&x1,&y1);
+printf(“Enter the coordinates x2 and y2:”);
+scanf(“%d%d”,&x2,&y2);
+initgraph(&gd,&gm,” “);
+if((x1==x2)&&(x2==y2))
+putpixel(x1,y1,255);
+else
+{
+    dx=x2-x1;
+dy=y2-y1;
+if(dx>=dy)
+{
+   length=dy;
+}
+else
+{
+length=dy;
+ }
+dx=dx/length;
+dy=dy/length;
+x=x1+0.5*dx;
+y=y1+0.5*dy;
+i=1;
+while(i<length)
+{
+  s=x;
+p=y;
+putpixel(s,p,255);
+x=x+dx;
+y=y+dy;
+i=i+1;
+}}
+getch();
+ closegraph();
+}
+
+PRACTICAL: 3
+AIM: To draw a straight line using Bresenham’s line algorithm.                    
+PROGRAM:
+#include<stdio.h>
+#include<graphics.h>
+void drawline(int x1, int y1, int x2, int y2)
+{
+    int dx, dy, p, x, y;
+	dx=x2-x1;
+	dy=y2-y1;
+	x=x1;
+	y=y1;
+	p=2*dy-dx;
+	while(x<x2)
+	{
+		if(p>=0)
+		{
+			putpixel(x,y,7);
+			y=y+1;
+			p=p+2*dy-2*dx;
+		}
+		else
+		{
+			putpixel(x,y,7);
+			p=p+2*dy;
+		}
+		x=x+1;
+	}
+}
+ int main()
+{
+            int gdriver=DETECT, gmode, error, x2, y2, x1, y1;
+	printf("Enter x1: ");
+	scanf("%d”, &x1);
+           printf("Enter y1: ");
+	scanf("%d”, &y1);
+	printf("Enter x2: ");
+	scanf("%d", &x2);
+            printf("Enter y2: ");
+	scanf("%d”, &y2);
+	initgraph(&gdriver, &gmode, " ");
+	drawline(x1, y1, x2, y2);
+            return 0;
+}
